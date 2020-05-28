@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using CRM.Mobile.Lib;
 using Foundation;
+using PCLAppConfig;
 using UIKit;
 
 namespace CRM.Mobile.iOS
@@ -23,8 +24,10 @@ namespace CRM.Mobile.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            XF.Material.iOS.Material.Init();
+           // ConfigurationManager.Initialise(PCLAppConfig.FileSystemStream.PortableStream.Current);
+            AutoMapperConfiguration.Configure();
             LoadApplication(new App());
-
             return base.FinishedLaunching(app, options);
         }
     }

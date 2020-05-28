@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using PCLAppConfig;
+using CRM.Mobile.Lib;
 
 namespace CRM.Mobile.Droid
 {
@@ -19,6 +21,9 @@ namespace CRM.Mobile.Droid
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            XF.Material.Droid.Material.Init(this, savedInstanceState);              
+            ConfigurationManager.Initialise(PCLAppConfig.FileSystemStream.PortableStream.Current);
+            AutoMapperConfiguration.Configure();
             LoadApplication(new App());
         }
     }

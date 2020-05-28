@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using CRM.Mobile.Views;
+using CRM.Mobile.Lib;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace CRM.Mobile {
@@ -9,9 +10,9 @@ namespace CRM.Mobile {
 
         public App() {
             InitializeComponent();
-
-
-            MainPage = new MainPage();
+            XF.Material.Forms.Material.Init(this);
+            AutoMapperConfiguration.Configure();            
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart() {

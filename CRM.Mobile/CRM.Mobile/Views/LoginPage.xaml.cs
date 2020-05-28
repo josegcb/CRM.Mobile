@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.Mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,21 @@ namespace CRM.Mobile.Views
 		public LoginPage ()
 		{
 			InitializeComponent ();
-		}
-	}
+            this.BindingContext = new LoginViewModel();
+            Email.Completed += Email_Completed;
+            Password.Completed += Password_Completed;
+        }
+
+        private void Password_Completed(object sender, EventArgs e) {
+            LoginViewModel vm = BindingContext as LoginViewModel;
+            if (vm != null) {
+                vm.ExecuteLoginCommand();
+            }
+
+        }
+
+        private void Email_Completed(object sender, EventArgs e) {
+            Password.Focus();
+        }
+    }
 }
